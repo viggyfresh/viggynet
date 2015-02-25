@@ -4,7 +4,7 @@ import random
 label_index = 0
 train = []
 val = []
-root = "./examples/shoes/shoe_dataset"
+root = "./examples/viggynet/shoe_dataset"
 root_dirs = os.listdir(root)
 for root_d in root_dirs:
     if root_d == ".DS_Store":

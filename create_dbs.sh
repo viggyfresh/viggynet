@@ -2,12 +2,12 @@
 # Create the imagenet lmdb inputs
 # N.B. set the path to the imagenet train + val data dirs
 
-EXAMPLE=examples/shoes
-DATA=examples/shoes
+EXAMPLE=examples/viggynet
+DATA=examples/viggynet
 TOOLS=build/tools
 
-TRAIN_DATA_ROOT=examples/shoes/shoe_dataset/
-VAL_DATA_ROOT=examples/shoes/shoe_dataset/
+TRAIN_DATA_ROOT=examples/viggynet/shoe_dataset/
+VAL_DATA_ROOT=examples/viggynet/shoe_dataset/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.

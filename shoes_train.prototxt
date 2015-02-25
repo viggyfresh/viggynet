@@ -5,12 +5,12 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "examples/shoes/shoes_train_lmdb"
+    source: "examples/viggynet/shoes_train_lmdb"
     backend: LMDB
     batch_size: 256
   }
   transform_param {
-    mean_file: "examples/shoes/shoes_mean.binaryproto"
+    mean_file: "examples/viggynet/shoes_mean.binaryproto"
   }
   include: { phase: TRAIN }
 }
@@ -20,12 +20,12 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "examples/shoes/shoes_val_lmdb"
+    source: "examples/viggynet/shoes_val_lmdb"
     backend: LMDB
     batch_size: 50
   }
   transform_param {
-    mean_file: "examples/shoes/shoes_mean.binaryproto"
+    mean_file: "examples/viggynet/shoes_mean.binaryproto"
   }
   include: { phase: TEST }
 }

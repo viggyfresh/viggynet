@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 ./build/tools/caffe train \
-    --solver=./examples/shoes/shoes_solver.prototxt
+    --solver=./examples/viggynet/shoes_solver.prototxt

@@ -1,4 +1,4 @@
-net: "examples/shoes/shoes_train.prototxt"
+net: "examples/viggynet/shoes_train.prototxt"
 test_iter: 500
 test_interval: 500
 base_lr: 0.01
