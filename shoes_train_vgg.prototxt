@@ -157,23 +157,6 @@ layers {
 }
 layers {
   bottom: "conv3_2"
-  top: "conv3_3"
-  name: "conv3_3"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 256
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv3_3"
-  top: "conv3_3"
-  name: "relu3_3"
-  type: RELU
-}
-layers {
-  bottom: "conv3_3"
   top: "pool3"
   name: "pool3"
   type: POOLING
@@ -185,65 +168,41 @@ layers {
 }
 layers {
   bottom: "pool3"
-  top: "fc6"
-  name: "fc6"
+  top: "fc4"
+  name: "fc4"
   type: INNER_PRODUCT
   inner_product_param {
-    num_output: 4096
+    num_output: 512
   }
 }
 layers {
-  bottom: "fc6"
-  top: "fc6"
-  name: "relu6"
+  bottom: "fc4"
+  top: "fc4"
+  name: "relu4"
   type: RELU
 }
 layers {
-  bottom: "fc6"
-  top: "fc6"
-  name: "drop6"
+  bottom: "fc4"
+  top: "fc4"
+  name: "drop4"
   type: DROPOUT
   dropout_param {
     dropout_ratio: 0.5
   }
 }
 layers {
-  bottom: "fc6"
-  top: "fc7"
-  name: "fc7"
+  bottom: "fc4"
+  top: "fc5"
+  name: "fc5"
   type: INNER_PRODUCT
   inner_product_param {
-    num_output: 4096
-  }
-}
-layers {
-  bottom: "fc7"
-  top: "fc7"
-  name: "relu7"
-  type: RELU
-}
-layers {
-  bottom: "fc7"
-  top: "fc7"
-  name: "drop7"
-  type: DROPOUT
-  dropout_param {
-    dropout_ratio: 0.5
-  }
-}
-layers {
-  bottom: "fc7"
-  top: "fc8"
-  name: "fc8"
-  type: INNER_PRODUCT
-  inner_product_param {
-    num_output: 1000
+    num_output: 17
   }
 }
 layers {
   name: "accuracy"
   type: ACCURACY
-  bottom: "fc8"
+  bottom: "fc5"
   bottom: "label"
   top: "accuracy"
   include: { phase: TEST }
@@ -251,7 +210,7 @@ layers {
 layers {
   name: "loss"
   type: SOFTMAX_LOSS
-  bottom: "fc8"
+  bottom: "fc5"
   bottom: "label"
   top: "loss"
 }
