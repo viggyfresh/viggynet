@@ -184,7 +184,7 @@ layers {
   }
 }
 layers {
-  bottom: "pool5"
+  bottom: "pool3"
   top: "fc6"
   name: "fc6"
   type: INNER_PRODUCT
@@ -251,7 +251,7 @@ layers {
 layers {
   name: "loss"
   type: SOFTMAX_LOSS
-  bottom: "fc8
+  bottom: "fc8"
   bottom: "label"
   top: "loss"
 }
