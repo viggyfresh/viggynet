@@ -14,6 +14,7 @@ layers {
   }
   include: { phase: TRAIN }
 }
+
 layers {
   name: "data"
   type: DATA
@@ -29,6 +30,7 @@ layers {
   }
   include: { phase: TEST }
 }
+
 layers {
   name: "conv1"
   type: CONVOLUTION
