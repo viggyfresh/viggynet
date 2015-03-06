@@ -1,7 +1,7 @@
 net: "examples/viggynet/shoes_train_vgg.prototxt"
 test_iter: 500
 test_interval: 500
-base_lr: 0.01
+base_lr: 0.001
 lr_policy: "step"
 gamma: 0.1
 stepsize: 100000
