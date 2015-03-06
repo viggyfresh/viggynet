@@ -1,9 +1,36 @@
-name: "VGG_ILSVRC_16_layers"
-input: "data"
-input_dim: 10
-input_dim: 3
-input_dim: 224
-input_dim: 224
+name: "ShoeNet"
+layers {
+  name: "data"
+  type: DATA
+  top: "data"
+  top: "label"
+  data_param {
+    source: "examples/viggynet/shoes_train_lmdb"
+    backend: LMDB
+    batch_size: 256
+  }
+  transform_param {
+    mean_file: "examples/viggynet/shoes_mean.binaryproto"
+  }
+  include: { phase: TRAIN }
+}
+
+layers {
+  name: "data"
+  type: DATA
+  top: "data"
+  top: "label"
+  data_param {
+    source: "examples/viggynet/shoes_val_lmdb"
+    backend: LMDB
+    batch_size: 50
+  }
+  transform_param {
+    mean_file: "examples/viggynet/shoes_mean.binaryproto"
+  }
+  include: { phase: TEST }
+}
+
 layers {
   bottom: "data"
   top: "conv1_1"
@@ -157,130 +184,6 @@ layers {
   }
 }
 layers {
-  bottom: "pool3"
-  top: "conv4_1"
-  name: "conv4_1"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv4_1"
-  top: "conv4_1"
-  name: "relu4_1"
-  type: RELU
-}
-layers {
-  bottom: "conv4_1"
-  top: "conv4_2"
-  name: "conv4_2"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv4_2"
-  top: "conv4_2"
-  name: "relu4_2"
-  type: RELU
-}
-layers {
-  bottom: "conv4_2"
-  top: "conv4_3"
-  name: "conv4_3"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv4_3"
-  top: "conv4_3"
-  name: "relu4_3"
-  type: RELU
-}
-layers {
-  bottom: "conv4_3"
-  top: "pool4"
-  name: "pool4"
-  type: POOLING
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
-layers {
-  bottom: "pool4"
-  top: "conv5_1"
-  name: "conv5_1"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv5_1"
-  top: "conv5_1"
-  name: "relu5_1"
-  type: RELU
-}
-layers {
-  bottom: "conv5_1"
-  top: "conv5_2"
-  name: "conv5_2"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv5_2"
-  top: "conv5_2"
-  name: "relu5_2"
-  type: RELU
-}
-layers {
-  bottom: "conv5_2"
-  top: "conv5_3"
-  name: "conv5_3"
-  type: CONVOLUTION
-  convolution_param {
-    num_output: 512
-    pad: 1
-    kernel_size: 3
-  }
-}
-layers {
-  bottom: "conv5_3"
-  top: "conv5_3"
-  name: "relu5_3"
-  type: RELU
-}
-layers {
-  bottom: "conv5_3"
-  top: "pool5"
-  name: "pool5"
-  type: POOLING
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
-layers {
   bottom: "pool5"
   top: "fc6"
   name: "fc6"
@@ -338,8 +241,17 @@ layers {
   }
 }
 layers {
+  name: "accuracy"
+  type: ACCURACY
   bottom: "fc8"
-  top: "prob"
-  name: "prob"
-  type: SOFTMAX
+  bottom: "label"
+  top: "accuracy"
+  include: { phase: TEST }
+}
+layers {
+  name: "loss"
+  type: SOFTMAX_LOSS
+  bottom: "fc8
+  bottom: "label"
+  top: "loss"
 }
