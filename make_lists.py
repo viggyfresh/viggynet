@@ -25,7 +25,7 @@ for root_d in root_dirs:
                     train.append(root_d + "/" + style_d + "/" + brand_d + "/" + image + " " + str(label_index) + "\n")
                 else:
                     val.append(root_d + "/" + style_d + "/" + brand_d + "/" + image + " " + str(label_index) + "\n")
-        label_index += 1
+    label_index += 1
 trainfile = open(root + "/trainfile", "wb")
 for t in train:
     trainfile.write(t)
