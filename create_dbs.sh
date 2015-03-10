@@ -13,8 +13,8 @@ VAL_DATA_ROOT=examples/viggynet/shoe_dataset/
 # already been resized using another tool.
 RESIZE=true
 if $RESIZE; then
-  RESIZE_HEIGHT=360
-  RESIZE_WIDTH=480
+  RESIZE_HEIGHT=180
+  RESIZE_WIDTH=240
 else
   RESIZE_HEIGHT=0
   RESIZE_WIDTH=0
