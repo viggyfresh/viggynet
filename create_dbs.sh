@@ -11,10 +11,10 @@ VAL_DATA_ROOT=examples/viggynet/shoe_dataset/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.
-RESIZE=false
+RESIZE=true
 if $RESIZE; then
-  RESIZE_HEIGHT=256
-  RESIZE_WIDTH=256
+  RESIZE_HEIGHT=360
+  RESIZE_WIDTH=480
 else
   RESIZE_HEIGHT=0
   RESIZE_WIDTH=0
