@@ -124,7 +124,7 @@ layers {
   weight_decay: 1
   weight_decay: 0
   inner_product_param {
-    num_output: 17
+    num_output: 12
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -141,7 +141,6 @@ layers {
   bottom: "fc1"
   bottom: "label"
   top: "accuracy"
-  include: { phase: TEST }
 }
 layers {
   name: "loss"

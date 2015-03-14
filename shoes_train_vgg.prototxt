@@ -7,7 +7,7 @@ layers {
   data_param {
     source: "examples/viggynet/shoes_train_lmdb"
     backend: LMDB
-    batch_size: 64
+    batch_size: 10
   }
   transform_param {
     mean_file: "examples/viggynet/shoes_mean.binaryproto"
@@ -23,7 +23,7 @@ layers {
   data_param {
     source: "examples/viggynet/shoes_val_lmdb"
     backend: LMDB
-    batch_size: 50
+    batch_size: 10
   }
   transform_param {
     mean_file: "examples/viggynet/shoes_mean.binaryproto"
@@ -152,7 +152,7 @@ layers {
   name: "fc4"
   type: INNER_PRODUCT
   inner_product_param {
-    num_output: 17
+    num_output: 12
   }
 }
 layers {
@@ -161,7 +161,6 @@ layers {
   bottom: "fc4"
   bottom: "label"
   top: "accuracy"
-  include: { phase: TEST }
 }
 layers {
   name: "loss"
