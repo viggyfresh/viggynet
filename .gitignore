@@ -1,2 +1,6 @@
-./shoe_dataset/
-./shoes_mean.binaryproto
+all/
+features/
+shoe_dataset/
+shoes_train_lmdb/
+shoes_val_lmdb/
+shoes_mean.binaryproto
