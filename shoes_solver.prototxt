@@ -9,6 +9,6 @@ display: 20
 max_iter: 20000
 momentum: 0.9
 weight_decay: 0.0005
-snapshot: 500
+snapshot: 1000
 snapshot_prefix: "examples/viggynet/snapshot"
 solver_mode: GPU
