@@ -1,36 +1,9 @@
-name: "ViggyNet_Small"
-layers {
-  name: "data"
-  type: DATA
-  top: "data"
-  top: "label"
-  data_param {
-    source: "examples/viggynet/shoes_train_lmdb"
-    backend: LMDB
-    batch_size: 50
-  }
-  transform_param {
-    mean_file: "examples/viggynet/shoes_mean.binaryproto"
-  }
-  include: { phase: TRAIN }
-}
-
-layers {
-  name: "data"
-  type: DATA
-  top: "data"
-  top: "label"
-  data_param {
-    source: "examples/viggynet/shoes_val_lmdb"
-    backend: LMDB
-    batch_size: 50
-  }
-  transform_param {
-    mean_file: "examples/viggynet/shoes_mean.binaryproto"
-  }
-  include: { phase: TEST }
-}
-
+name: "ViggyNet_Class_Deploy"
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 180
+input_dim: 240
 layers {
   name: "conv1"
   type: CONVOLUTION
@@ -136,16 +109,8 @@ layers {
   }
 }
 layers {
-  name: "accuracy"
-  type: ACCURACY
-  bottom: "fc1"
-  bottom: "label"
-  top: "accuracy"
-}
-layers {
   name: "loss"
-  type: SOFTMAX_LOSS
+  type: SOFTMAX
   bottom: "fc1"
-  bottom: "label"
   top: "loss"
 }
