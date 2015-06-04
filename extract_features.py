@@ -1,11 +1,11 @@
 import numpy as np
 import caffe
 
-model = 'vgg'
-width = 224
-height = 224
-dim = 1000
-layer = 'fc8'
+model = 'alexnet'
+width = 227
+height = 227
+dim = 4096
+layer = 'fc7'
 
 caffe.set_mode_cpu()
 net = caffe.Net(model + '.prototxt', model + '.caffemodel', caffe.TEST)
